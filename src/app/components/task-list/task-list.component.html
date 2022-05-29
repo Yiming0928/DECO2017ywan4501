@@ -1,0 +1,41 @@
+<div class="task-container sub-page-container">
+  <div class="list-container">
+    <div
+      class="task-item"
+      *ngFor="let list of allList"
+      droppable
+      [dropScope]="'task'"
+      [dragHintClass]="'on-drag-hint'"
+      [dragOverClass]="'on-drag-over'"
+      (onDrop)="onItemDrop($event, task)"
+    >
+      <div class="item-header">{{list.name}}</div>
+      <div
+        *ngFor="let task of list.list"
+        class="task-item"
+        draggable
+        [dragData]="task"
+        [dragScope]="'task'"
+        [ngClass]="{'danger':task.canPass}"
+      >
+        <div (click)="editTask(task.id)">
+          <div class="task-priority"></div>
+          <header>{{task.name}}</header>
+          <div class="task-info">
+            <span>{{task.createDate | date: "MM/dd/yy"}}</span>
+          </div>
+          <div class="task-info">
+            <span>{{task.createDate | date: "MM/dd/yy"}}</span>
+          </div>
+          <div class="task-info" [ngClass]="{'danger':task.tag === 'tag'}">
+            <span>{{task.tag}}</span>
+          </div>
+        </div>
+        <!-- <button *ngIf="!task.deleteDate" nz-button nzType="danger" nzSize="small" (click)="tryDeletetask(task, true)">归档</button>
+        <button *ngIf="task.deleteDate" nz-button nzType="primary" nzSize="small" (click)="tryDeletetask(task, false)">未归档</button>
+        <button style="margin-left: 5px;" *ngIf="task.canPass" nz-button nzType="danger" nzSize="small" (click)="passtask(task.id)">审核通过</button>
+        <button style="margin-left: 5px;" *ngIf="task.canPass" nz-button nzType="danger" nzSize="small" (click)="rejecttask(task)">审核拒绝</button> -->
+      </div>
+    </div>
+  </div>
+</div>

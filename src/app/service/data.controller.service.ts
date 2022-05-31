@@ -1,3 +1,4 @@
+import { Content, ContentList, ContentType } from '@/types/content';
 import { Task, TaskDetail, TaskType } from '@/types/task';
 import { Injectable } from '@angular/core';
 
@@ -64,6 +65,24 @@ export class DataControllerService {
   public findTaskById(id: number, type: TaskType) {
     const task: Task = JSON.parse(localStorage.getItem(type));
     return task.list.find(t => t.id === id);
+  }
+
+  public getContentList(): ContentList[] {
+    const contents: Content[] = JSON.parse(localStorage.getItem('content-list')) || [];
+    const list : ContentList[] = [{type: ContentType.jpns1611, list: []}, {type: ContentType.writ1000, list: []}];
+    const jpns1611List = list.find(l => l.type === ContentType.jpns1611);
+    const writ1000List = list.find(l => l.type === ContentType.writ1000);
+    contents.forEach(c => {
+      if (c.type === ContentType.jpns1611) jpns1611List.list.push(c);
+      if (c.type === ContentType.writ1000) writ1000List.list.push(c);
+    });
+    return list;
+  }
+
+  public addContent(content: Content) {
+    const contents: Content[] = JSON.parse(localStorage.getItem('content-list')) || [];
+    contents.push(content);
+    localStorage.setItem('content-list', JSON.stringify(contents));
   }
 
 }

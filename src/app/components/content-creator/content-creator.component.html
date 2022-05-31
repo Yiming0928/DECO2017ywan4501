@@ -1,9 +1,9 @@
-<div class="task-creator-container">
+<div class="content-creator-container">
   <nz-modal
     [(nzVisible)]="modalVisible"
     nzMask="true"
     nzZIndex="1001"
-    [nzTitle]="modalTitle"
+    nzTitle="add content"
     nzMaskClosable="false"
     [nzFooter]="modalFooter"
     (nzAfterOpen)="afterOpen()"
@@ -18,12 +18,23 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item class="ant-form-item ant-row">
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="tag">tag</nz-form-label>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="text">text</nz-form-label>
       <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="required">
-        <nz-select formControlName="tag" nzPlaceHolder="tag" >
-          <nz-option nzLabel="quiz" nzValue="quiz"></nz-option>
-          <nz-option nzLabel="assignment" nzValue="assignment"></nz-option>
-          <nz-option nzLabel="groupWork" nzValue="groupWork"></nz-option>
+        <input nz-input id="text" formControlName="text" placeHolder="text"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="ant-form-item ant-row">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="url">url</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="required">
+        <input nz-input id="url" formControlName="url" placeHolder="url"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="ant-form-item ant-row">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="type">type</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="required">
+        <nz-select formControlName="type" nzPlaceHolder="type" >
+          <nz-option nzLabel="JPNS1611" nzValue="JPNS1611"></nz-option>
+          <nz-option nzLabel="WRIT1000" nzValue="WRIT1000"></nz-option>
         </nz-select>
       </nz-form-control>
     </nz-form-item>

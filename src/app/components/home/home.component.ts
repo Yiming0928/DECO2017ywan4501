@@ -20,22 +20,4 @@ export class HomeComponent {
     this.spinControllerService.update(false);
   }
 
-  public showLogout() {
-    // this.modalService.confirm({
-    //   nzTitle: '确定退出登录吗？',
-    //   nzOnOk: () => {
-    //     if (this.logout$) this.logout$.unsubscribe();
-    //     this.logout$ = this.authService.logout().subscribe(res => {
-    //       if (res.success) this.router.navigate(['/page/login']);
-    //       else {
-    //         this.notification.error('失败', `退出登录失败！原因:${res.message}`, {
-    //           nzDuration: 2000,
-    //         });
-    //       }
-    //     });
-    //   }
-    // });
-
-  }
-
 }

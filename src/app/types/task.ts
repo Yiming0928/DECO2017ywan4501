@@ -17,6 +17,6 @@ export enum TaskType {
 }
 export enum TaskTag {
   quiz = 'quiz',
-  easy = 'easy',
+  assignment = 'assignment',
   groupWork = 'groupWork',
 }

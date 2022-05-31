@@ -1,0 +1,14 @@
+<div class="content-container sub-page-container">
+  <div class="list-container">
+    <div *ngFor="let content of contentList" class="content-list">
+      <p>{{content.type}}</p>
+      <div *ngFor="let item of content.list">
+        <p>{{item.name}}</p>
+        <p>{{item.text}}</p>
+        <p>{{item.url}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <app-content-creator [modalVisible]="editorVisible" (changeModal)="changeEditorModal($event)"></app-content-creator>
+</div>

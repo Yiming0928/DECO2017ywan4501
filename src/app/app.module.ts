@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskCreatorComponent } from './components/task-creator/task-creator.component';
+import { ContentCreatorComponent } from './components/content-creator/content-creator.component';
+import { ContentListComponent } from './components/content-list/content-list.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { TaskCreatorComponent } from './components/task-creator/task-creator.com
     AppComponent,
     HomeComponent,
     TaskCreatorComponent,
+    ContentCreatorComponent,
     TaskListComponent,
+    ContentListComponent,
   ],
   imports: [
     BrowserModule,

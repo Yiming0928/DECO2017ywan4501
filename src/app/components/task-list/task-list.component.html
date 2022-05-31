@@ -21,7 +21,7 @@
           <i class="icon" nz-icon nzType="edit" nzTheme="outline" (click)="editTask(task.id, list)"></i>
           <div class="task-priority"></div>
           <div class="task-tag">
-            <span [ngClass]="{'quiz':task.tag === 'quiz', 'easy':task.tag === 'easy', 'groupWork':task.tag === 'groupWork'}">{{task.tag}}</span>
+            <span [ngClass]="{'quiz':task.tag === 'quiz', 'assignment':task.tag === 'assignment', 'groupWork':task.tag === 'groupWork'}">{{task.tag}}</span>
           </div>
           <header>{{task.name}}</header>
           <div class="task-info">

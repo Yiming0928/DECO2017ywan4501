@@ -1,0 +1,33 @@
+<div class="task-creator-container">
+  <nz-modal
+    [(nzVisible)]="modalVisible"
+    nzMask="true"
+    nzZIndex="1001"
+    [nzTitle]="modalTitle"
+    nzMaskClosable="false"
+    (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOnOk()"
+    (nzAfterOpen)="afterOpen()"
+    (nzAfterClose)="afterClose()"
+    [nzOkLoading]="isOkLoading"
+  >
+  <form nz-form [formGroup]="validateForm">
+    <nz-form-item class="ant-form-item ant-row">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="required">
+        <input nz-input id="name" formControlName="name" placeHolder="name"/>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="ant-form-item ant-row">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="tag">tag</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="required">
+        <nz-select formControlName="tag" nzPlaceHolder="tag" >
+          <nz-option nzLabel="quiz" nzValue="quiz"></nz-option>
+          <nz-option nzLabel="easy" nzValue="easy"></nz-option>
+          <nz-option nzLabel="groupWork" nzValue="groupWork"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  </nz-modal>
+</div>

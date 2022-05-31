@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { DropEvent } from 'ng-drag-drop';
 import { SpinControllerService } from '@/service/spin.controller.service';
-import { Task, TaskDetail } from '@/types/task';
+import { Task, TaskDetail, TaskTag, TaskType } from '@/types/task';
+import { DataControllerService } from '@/service/data.controller.service';
 
 @Component({
   selector: 'app-task-list',
@@ -11,38 +12,47 @@ import { Task, TaskDetail } from '@/types/task';
 })
 export class TaskListComponent implements OnInit {
  
-  public allList: Task[] = [{
-    name: 'To Do',
-    list: [{
-      id: 1,
-      name: 'test',
-      createDate: new Date(),
-      useTime: '12h 43min 23s',
-      tag: 'quiz'
-    }]
-  }];
+  public allList: Task[] = [];
   public taskList: TaskDetail[] = [];
+  public editorVisible: boolean = false;
+  public activeId: number = null;
+  public activeType: TaskType = null;
 
   constructor(
     private message: NzMessageService,
     private modalService: NzModalService,
-    public spinControllerService: SpinControllerService,
+    private spinControllerService: SpinControllerService,
+    private dataControllerService: DataControllerService,
   ) { }
 
   public ngOnInit() {
-    
+    this.allList = this.dataControllerService.getTaskList();
   }
 
 
-  /**
-   * 看板拖拽更新状态
-   *
-   * @param {DropEvent} event
-   * @param {TaskDetail} task
-   * @memberof KanbanComponent
-   */
-  public onItemDrop(event: DropEvent, task: TaskDetail) {
+  public onItemDrop(event: DropEvent, task: Task) {
+    console.log(1111, event, task);
+    this.dataControllerService.saveTask(event.dragData, task.type);
+    this.allList = this.dataControllerService.getTaskList();
+
   }
 
+  public addTask(list: Task) {
+    this.editorVisible = true;
+    this.activeId = null;
+    this.activeType = list.type;
+  }
 
+  public editTask(id: number, list: Task) {
+    this.editorVisible = true;
+    this.activeId = id;
+    this.activeType = list.type;
+  }
+
+  public changeEditorModal(visible: boolean) {
+    this.editorVisible = visible;
+    this.activeId = null;
+    this.activeType = null;
+    this.allList = this.dataControllerService.getTaskList();
+  }
 }

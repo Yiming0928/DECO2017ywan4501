@@ -1,14 +1,20 @@
 <div class="content-container sub-page-container">
   <div class="list-container">
     <div *ngFor="let content of contentList" class="content-list">
-      <p>{{content.type}}</p>
-      <div *ngFor="let item of content.list">
-        <p>{{item.name}}</p>
-        <p>{{item.text}}</p>
-        <p>{{item.url}}</p>
+      <p class="title" style="color: #854389;border: 2px solid #854398;" *ngIf="content.type === 'JPNS1611'">{{content.type}}</p>
+      <p class="title" style="color: #2c385a;border: 2px solid #2c385a;" *ngIf="content.type === 'WRIT1000'">{{content.type}}</p>
+      <div class="item-wrapper">
+        <div class="item" *ngFor="let item of content.list">
+          <p class="name">{{item.name}}</p>
+          <p class="text" style="border-bottom: 1px solid #854398;" *ngIf="content.type === 'JPNS1611'">{{item.text}}</p>
+          <p class="text" style="border-bottom: 2px solid #2c385a;" *ngIf="content.type === 'WRIT1000'">{{item.text}}</p>
+          <a class="url">{{item.url}}</a>
+        </div>
       </div>
     </div>
   </div>
-  
+  <div class="add-content">
+    <i nz-icon nzType="plus" nzTheme="outline" (click)="addContent(list)"></i>
+  </div>
   <app-content-creator [modalVisible]="editorVisible" (changeModal)="changeEditorModal($event)"></app-content-creator>
 </div>

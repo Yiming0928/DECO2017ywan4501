@@ -29,7 +29,7 @@ export class ContentListComponent implements OnInit {
   }
 
 
-  public addTask(list: Task) {
+  public addContent(list: Task) {
     this.editorVisible = true;
   }
 

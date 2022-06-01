@@ -79,21 +79,16 @@ export class ContentCreatorComponent implements OnInit, OnDestroy {
   }
 
   public handleOnOk() {
-    this.update();
+    this.add();
   }
 
-  public update() {
+  public add() {
     const params = this.buildParams();
     if (!params) return;
-    // this.dataControllerService.saveTask({
-    //   id: this.taskDetail.id,
-    //   name: params.name,
-    //   tag: params.tag,
-    //   createDate: this.taskDetail.createDate,
-    // }, this.type);
+    this.dataControllerService.addContent(params);
     this.changeModal.emit(false);
     this.validateForm.reset();
-    this.notification.success('success', 'update task success', {
+    this.notification.success('success', 'add content success', {
       nzDuration: 2000,
     });
   }

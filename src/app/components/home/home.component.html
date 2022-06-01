@@ -15,6 +15,8 @@
       <div *ngIf="!showTasks" class="inner-content">
         <app-content-list></app-content-list>
       </div>
+      <img class="icon" (click)="showMusic = !showMusic;" src="assets/icon.png">
+      <img class="music" *ngIf="showMusic" src="assets/music.png">
     </nz-content>
   </nz-layout>
 </nz-layout>

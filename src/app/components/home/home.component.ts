@@ -11,6 +11,7 @@ import { NzModalService, NzNotificationService } from 'ng-zorro-antd';
 export class HomeComponent {
   public showTasks = true;
   public logout$: Subscription;
+  public showMusic: boolean = false;
 
   constructor(
     private modalService: NzModalService,

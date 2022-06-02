@@ -23,16 +23,24 @@ export class ContentListComponent implements OnInit {
     private dataControllerService: DataControllerService,
   ) { }
 
+  /**
+   * init contentList
+   */
   public ngOnInit() {
     this.contentList = this.dataControllerService.getContentList();
     console.log(444445555, this.contentList);
   }
 
-
+  /**
+   * open content editor
+   */
   public addContent(list: Task) {
     this.editorVisible = true;
   }
 
+  /**
+   * close editor and get contentList
+   */
   public changeEditorModal(visible: boolean) {
     this.editorVisible = visible;
     this.contentList = this.dataControllerService.getContentList();

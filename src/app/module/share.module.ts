@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule, NZ_I18N, zh_CN, NZ_ICONS, } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NZ_I18N, en_US, NZ_ICONS, } from 'ng-zorro-antd';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
-import zh from '@angular/common/locales/zh';
+import en from '@angular/common/locales/en';
 
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
-
+// initialize the icons of this ui framework
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 
-registerLocaleData(zh);
+// use English
+registerLocaleData(en);
 
-const componentsAndPipes = [
-];
 
 @NgModule({
   imports: [
@@ -26,11 +25,8 @@ const componentsAndPipes = [
     ReactiveFormsModule,
     CommonModule,
   ],
-  declarations: [
-    ...componentsAndPipes,
-  ],
   providers: [
-    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons }
   ],
   exports: [
@@ -38,7 +34,6 @@ const componentsAndPipes = [
     NgZorroAntdModule,
     ReactiveFormsModule,
     CommonModule,
-    ...componentsAndPipes,
   ],
 })
 export class ShareModule { }

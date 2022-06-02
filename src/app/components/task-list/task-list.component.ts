@@ -15,6 +15,9 @@ export class TaskListComponent implements OnInit {
   public allList: Task[] = [];
   public taskList: TaskDetail[] = [];
   public editorVisible: boolean = false;
+  /**
+   * task being edited
+   */
   public activeId: number = null;
   public activeType: TaskType = null;
 
@@ -24,25 +27,35 @@ export class TaskListComponent implements OnInit {
     private spinControllerService: SpinControllerService,
     private dataControllerService: DataControllerService,
   ) { }
-
+  
+  /**
+   * get task list by using dataControllerService
+   */
   public ngOnInit() {
     this.allList = this.dataControllerService.getTaskList();
   }
 
-
+  /**
+   * update task type when dragging
+   */
   public onItemDrop(event: DropEvent, task: Task) {
-    console.log(1111, event, task);
     this.dataControllerService.saveTask(event.dragData, task.type);
     this.allList = this.dataControllerService.getTaskList();
 
   }
 
+  /**
+   * open modal and remove activeId and activeType
+   */
   public addTask(list: Task) {
     this.editorVisible = true;
     this.activeId = null;
     this.activeType = list.type;
   }
 
+  /**
+   * open modal and init activeId and activeType
+   */
   public editTask(id: number, list: Task) {
     this.editorVisible = true;
     this.activeId = id;

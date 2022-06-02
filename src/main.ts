@@ -9,5 +9,6 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule).then(() => {
+  // after init app, hide loading icon
   document.getElementById('global-spin').hidden = true;
 }).catch(err => console.error(err));

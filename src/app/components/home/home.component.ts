@@ -13,6 +13,9 @@ export class HomeComponent {
   public logout$: Subscription;
   public showMusic: boolean = false;
 
+  /**
+   * create an instance of HomeComponent and close loading icon
+   */
   constructor(
     private modalService: NzModalService,
     private notification: NzNotificationService,

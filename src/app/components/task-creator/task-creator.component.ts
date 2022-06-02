@@ -26,7 +26,10 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
     private message: NzMessageService,
     private fb: FormBuilder,
   ) { }
-
+  
+  /**
+   * init form
+   */
   public ngOnInit() {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -37,6 +40,9 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {
   }
 
+  /**
+   * edit task or add task
+   */
   public afterOpen() {
     if (this.id) {
       this.modalTitle = 'edit task';
@@ -53,6 +59,9 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * after close this modal
+   */
   public afterClose() {
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -61,6 +70,9 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
     this.taskDetail = null;
   }
 
+  /**
+   * get task detail by DataControllerService and init form
+   */
   public getById(id: number) {
     const taskDetail = this.dataControllerService.findTaskById(id, this.type);
     if (taskDetail) {
@@ -103,6 +115,9 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
     else this.add();
   }
 
+  /**
+   * build params and use dataControllerService to create task
+   */
   public add() {
     const params = this.buildParams();
     if (!params) return;
@@ -120,6 +135,9 @@ export class TaskCreatorComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * build params and use dataControllerService to update task
+   */
   public update() {
     const params = this.buildParams();
     if (!params) return;

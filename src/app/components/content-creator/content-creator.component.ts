@@ -1,4 +1,5 @@
 import { DataControllerService } from '@/service/data.controller.service';
+import { Content } from '@/types/content';
 import { Component, Input, Output, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzNotificationService, NzMessageService } from 'ng-zorro-antd';
@@ -58,7 +59,10 @@ export class ContentCreatorComponent implements OnInit, OnDestroy {
     this.validateForm.reset();
   }
 
-  public buildParams() {
+  /**
+   * build content for creating content
+   */
+  public buildParams(): Content {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
@@ -78,10 +82,16 @@ export class ContentCreatorComponent implements OnInit, OnDestroy {
     };
   }
 
+  /**
+   * handle on ok button
+   */
   public handleOnOk() {
     this.add();
   }
 
+  /** 
+   * add content and close this modal
+   */
   public add() {
     const params = this.buildParams();
     if (!params) return;

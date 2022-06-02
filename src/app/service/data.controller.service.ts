@@ -7,15 +7,21 @@ import { Injectable } from '@angular/core';
 })
 export class DataControllerService {
 
+  /**
+   * save the task and update the data by type
+   */
   public saveTask(taskDetail: TaskDetail, type: TaskType): Task {
     const task: Task = JSON.parse(localStorage.getItem(type)) || {
       type,
       list: []
     };
+    // find the same task by id
     const sameTask = task.list.find(t => t.id === taskDetail.id);
+    // if the same task does not exist, insert this list 
     if (!sameTask) {
       task.list.push({...taskDetail});
     } else {
+      // else update detail
       task.list.forEach(t => {
         if ((t.id === taskDetail.id)) {
           t.name = taskDetail.name;
@@ -23,7 +29,7 @@ export class DataControllerService {
         }
       });
     }
-
+    // use localStorage to save the list
     localStorage.setItem(task.type, JSON.stringify(task));
 
     // remove the same task
@@ -36,14 +42,19 @@ export class DataControllerService {
         const i = task2.list.findIndex(t => t.id === taskDetail.id);
         if (i !== -1) {
           task2.list.splice(i, 1);
+          // Use json to convert data to string
           localStorage.setItem(t, JSON.stringify(task2));
         }
       }
     });
 
+    // Use json to convert data to object
     return JSON.parse(localStorage.getItem(task.type));
   }
 
+  /**
+   * get taks list and init this list by type
+   */
   public getTaskList() {
     const allList: Task[] = [];
     allList.push(JSON.parse(localStorage.getItem(TaskType.todo)) || {
@@ -58,15 +69,20 @@ export class DataControllerService {
       type: TaskType.done,
       list: [],
     });
-    console.log(4444, allList);
     return allList;
   }
 
+  /**
+   * find task by id
+   */
   public findTaskById(id: number, type: TaskType) {
     const task: Task = JSON.parse(localStorage.getItem(type));
     return task.list.find(t => t.id === id);
   }
 
+  /**
+   * get content list and init list by type
+   */
   public getContentList(): ContentList[] {
     const contents: Content[] = JSON.parse(localStorage.getItem('content-list')) || [];
     const list : ContentList[] = [{type: ContentType.jpns1611, list: []}, {type: ContentType.writ1000, list: []}];
@@ -79,6 +95,9 @@ export class DataControllerService {
     return list;
   }
 
+  /**
+   * add content and save data by localStorage
+   */
   public addContent(content: Content) {
     const contents: Content[] = JSON.parse(localStorage.getItem('content-list')) || [];
     contents.push(content);

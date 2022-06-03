@@ -6,27 +6,27 @@ In this project, HTML, Less, TypeScript and Angular have been used.
 
 ### Add task
 
-![image](​https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/addtask.png)
+![image](https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/addtask.png)
 
 
 ### Edit task 
 
 click on icon in the upper right corner of the task
 
-![image](​https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/edittask.png)
+![image](https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/edittask.png)
 
 
 
 ### Add content
 
-![image](​https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/addcontent.png)
+![image](https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/addcontent.png)
 
 
 ### Function button 
 
 bottom right with one click
 
-![image](​https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/functionbutton.png)
+![image](https://raw.githubusercontent.com/Yiming0928/DECO2017ywan4501/main/img/functionbutton.png)
 
 
 ### Drag function
